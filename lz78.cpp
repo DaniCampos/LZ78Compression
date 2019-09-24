@@ -318,7 +318,7 @@ int main(){
 	stringstream ss;
 	string s;
 	ifstream infile;
-	infile.open("bible1.txt");
+	infile.open("bible2.txt");
 	while(getline(infile, s)){
 		ss<<s;
 	}
@@ -369,40 +369,40 @@ int main(){
 	// vector<int> N = trie->N;
 	// vector<char> S = trie->S;
 	// delete trie;
-	cout<<decompress_index_compact(6, 18, M, bps, N, S)<<endl;
+	// cout<<decompress_index_compact(6, 18, M, bps, N, S)<<endl;
 	// cout<<regular_compression->decompress_index(6, 18)<<endl;
 	// fun(bps);
 	memory_usage_regular(regular_compression);
 	memory_usage_compact(M, bps, N, S);
 
-	// for(int k = 0; k < substring_length.size(); k++){
-	// 	int sub_l = substring_length[k];
-	// 	cout<<"substring de largo "<<sub_l<<endl;
-	// 	int i = rand_num(1, text.size()-sub_l);
-	// 	int j = i+sub_l-1;
-	// 	cout<<"i y j elegidos "<<i<<" "<<j<<endl;
-	// 	clock_t start, end; 
-	// 	start = clock();
-	// 	string reg_str = regular_compression.decompress_index(i, j);
-	// 	end = clock();
-	// 	double regular_time = double(end - start) / double(CLOCKS_PER_SEC);
-	// 	cout<<"fin descompresion regular"<<endl;
-	// 	start = clock();
-	// 	string comp_str = decompress_index_compact(i, j, M, bps, trie.N, trie.S);
-	// 	end = clock();
-	// 	double compact_time = double(end - start) / double(CLOCKS_PER_SEC);
-	// 	cout<<"fin descompresion compacta"<<endl;
-	// 	cout<<"Tiempo representacion regular: "<<fixed<<regular_time<<setprecision(7)<<endl;
-	// 	cout<<"Tiempo representacion compacta: "<<fixed<<compact_time<<setprecision(7)<<endl;
-	// 	cout<<"Diferencia: "<<fixed<<regular_time-compact_time<<setprecision(7)<<endl;
-	// 	if(reg_str == comp_str){
-	// 		cout<<"String comparados, son iguales"<<endl;
-	// 	}
-	// 	else{
-	// 		cout<<"String comparados, NO son iguales"<<endl;
-	// 	}
+	for(int k = 0; k < substring_length.size(); k++){
+		int sub_l = substring_length[k];
+		cout<<"substring de largo "<<sub_l<<endl;
+		int i = rand_num(1, text_size-sub_l);
+		int j = i+sub_l-1;
+		cout<<"i y j elegidos "<<i<<" "<<j<<endl;
+		clock_t start, end; 
+		start = clock();
+		string reg_str = regular_compression->decompress_index(i, j);
+		end = clock();
+		double regular_time = double(end - start) / double(CLOCKS_PER_SEC);
+		cout<<"fin descompresion regular"<<endl;
+		start = clock();
+		string comp_str = decompress_index_compact(i, j, M, bps, N, S);
+		end = clock();
+		double compact_time = double(end - start) / double(CLOCKS_PER_SEC);
+		cout<<"fin descompresion compacta"<<endl;
+		cout<<"Tiempo representacion regular: "<<fixed<<regular_time<<setprecision(7)<<endl;
+		cout<<"Tiempo representacion compacta: "<<fixed<<compact_time<<setprecision(7)<<endl;
+		cout<<"Diferencia: "<<fixed<<regular_time-compact_time<<setprecision(7)<<endl;
+		if(reg_str == comp_str){
+			cout<<"String comparados, son iguales"<<endl;
+		}
+		else{
+			cout<<"String comparados, NO son iguales"<<endl;
+		}
 
-	// }
+	}
 	// cout<<decompress_index_compact(6, 18, M, bps, trie.N, trie.S)<<endl;
 	// cout<<regular_compression.decompress_index(6, 18)<<endl;
 
